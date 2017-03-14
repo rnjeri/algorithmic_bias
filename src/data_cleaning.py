@@ -5,7 +5,8 @@ def load_data_into_df(filepath):
   return df
   
 def rename_columns(df):
-  pass
+  df.rename(columns = {'S Code': 's_code','Level of Service (single App)': 'service_level', 'Gender':'gender','Race / Ethnicity':'race_or_ethnicity', 'Number of Children':'num_of_children', 'Education Level When Released':'education_level_when_released' }, inplace = True)
+  return df
 
 def drop_nonpped_users(df):
   
