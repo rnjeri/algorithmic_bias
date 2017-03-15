@@ -1,5 +1,4 @@
 import pandas as pd
-
 def data_cleaning_function(filepath):
     '''
     load data into a pandas dataframe from the csv file
@@ -10,7 +9,6 @@ def data_cleaning_function(filepath):
     data from Salesforce
     '''
     df_ = df_.ix[:3570,:]
-
     '''
     keep only the data that has DOC numbers
     '''
@@ -22,12 +20,10 @@ def data_cleaning_function(filepath):
     recidivism_events = df_.groupby('DOC / Agency #').count()['Recidivism Event Name']
     df_ = df_.drop_duplicates('DOC / Agency #')
     df_.set_index('DOC / Agency #', inplace = True)
-
     '''
     concat the recidivism count with original data frame
     '''
     clean_df = pd.concat([df_, recidivism_events], axis = 1)
-
     '''
     rename the columns
     '''
@@ -36,3 +32,4 @@ def data_cleaning_function(filepath):
            'gender', 'race_or_ethnicity', 'num_of_children',
            'num_recidivisms']
     return clean_df
+    
