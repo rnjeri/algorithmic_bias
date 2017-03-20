@@ -1,13 +1,20 @@
 # Machine Bias
-Risk level assessment tools are used at all levels of the justice system from pre-trial to sentensing. A study by prorepublica found that these models have an accuracy score of 71%, a score that varies for different races. 
-Risk levels are used to determine how likely someone is to re-offend in the future, and how likely they are to commit a violent crime in the future. Other than accuracy scores, an important measure of model performance for such risk classification is precision and recall. The prorepublica study found that the model has a lot more false negatives, 44.9% for African Americans, compared to 23.5% for whites. When judges take the risk level score into account when making their judgement, these African Americans misclassified as likely to offend are penalized for a faulty algorithm. 
- 
+## Business Understanding
+This project has two scopes. The first one is to arrive at an estimate of the true cost of incarceration, and the second is to come up with a precise and sensitive way to predict recidivism. The end goal is to create a cost benefit analysis for the Post Prison Education Program that shows how investment in PPEP could ultimately lower the total cost of incarceration by lowering recidivism rates, but also by providing skills and social networks that are lost while one is incarcerated. 
+Recidivism prediction isn't a new field of study. There are researchers who have developed risk assessment tools that estimate the probability that a person will reoffend. These tools are used at all levels of the justice system from pre-trial to sentensing. However, a study by prorepublica found that while these models have an accuracy score of 71%, they output a lot higher False Positives for African Americans and False Negatives for whites when it comes to prediciting the likelihood of someone to commit a violent crime in the future. The prorepublica study found that the model has a lot more false negatives, 44.9% for African Americans, compared to 23.5% for whites. 
+Use of a faulty algorithm in the justice system results in a misallocation of resources by identifying as high risk people who aren't high risk and vice versa.
+Is there an algorithm that can predict recidivism and risk levels with higher precision and recall?
 
-# Cost of Incarceration
+
+## Cost of Incarceration
 What is the true cost of incarceration?
+    -How can better predictions of the rate of recidivism affect the cost of incarceration?
+    -How can investment in PPEP and similar programs impact recidivism, and consequently, the cost of incarceration?
 What features are most correlated with recidivism?
 
-# Building Better Prediction Models
+## Building Better Prediction Models
 - How do we prevent bias from leaking into the prediction models while so many factors considered to be predictors are correlated with race?
+- The original recidivism prediction models were 
 
-
+## Deployment
+- A web app that predicts recidivism probability given the profile of a person. The goal is that with access to more data, the precision of the model can be improved to provide more accurate recidivism predictions. 
