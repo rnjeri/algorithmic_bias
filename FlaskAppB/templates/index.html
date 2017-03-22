@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Algorithmic Bias</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="../static/css/grayscale.min.css" rel="stylesheet">
+
+    <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+    <style>
+    .navbar-toggler {
+        z-index: 1; 
+    }   
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%; 
+        }   
+    }   
+    </style>
+<body>
+<head>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+            <h1 class="text-muted">Machine Bias</h1>
+        </div>
+ 
+        <div class="jumbotron">
+            <h3>Recidivism Prediction</h3>
+            <p class="lead"></p>
+        </div>
+ 
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Feature Questions</h4>
+		<p class="question">1. What is your gender?</p>
+		<ul class="answers":w>
+		<input type="radio" name="gender" value="male" id="q1a"><label for="q1a">Male</label><br/>
+		<input type="radio" name="gender" value="female" id="q1b"><label for="q1b">Female</label><br/>
+		</ul>
+		<p class="question">2. What is your education level?</p>
+                <ul class="answers">
+                <input type="radio" name="education" value="College Degree" id="q2a"><label for="q2a">College Degree</label><br/>
+                <input type="radio" name="education" value="High School Diploma" id="q2b"><label for="q2b">High School Diploma</label><br/>
+		<input type="radio" name="education" value="GED" id="q2c"><label for="q2c">GED</label><br/>
+                <input type="radio" name="education" value="8th Grade" id="q2d"><label for="q2d">8th Grade</label><br/>
+                </ul>
+		<p class="question">3. What race do you identify as?</p>
+                <ul class="answers">
+                <input type="radio" name="race" value="African American" id="q1a"><label for="q1a">African American</label><br/>
+                <input type="radio" name="race" value="Caucasian" id="q1b"><label for="q1b">Caucasian</label><br/>
+                <input type="radio" name="race" value="Hispanic" id="q1a"><label for="q1a">Hispanic</label><br/>
+                <input type="radio" name="race" value="Asian" id="q1b"><label for="q1b">Asian</label><br/>
+		</ul>
+           	 <p class="question">4. How old are you?</p>
+		<form> Age:<br> <input type="int" name="age"><br></form>
+                </ul> 
+		<p class="btn btn-lg btn-success" href="showSignUp" role="button">Calculate Your Predicted Recidivism</a>
+            </p>
+		</div>
+        </div>
+ 
+        <footer class="footer">
+            <p> Copyright &copy; Rebecca Njeri 2017</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>
