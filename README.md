@@ -33,7 +33,7 @@ The data set is very small.
 - [Equality of Opportunity in Supervised Learning](https://arxiv.org/pdf/1610.02413.pdf)
 - [Google's algorithm] (http://www.independent.co.uk/life-style/gadgets-and-tech/news/googles-algorithm-shows-prestigious-job-ads-to-men-but-not-to-women-10372166.html)shows prestigious job ads to men, but not to women.
 
-![alt text](https://github.com/rnjeri/machine_bias/blob/master/software_images/python.jpg)
+![alt text](https://github.com/rnjeri/machine_bias/blob/master/software_images/python.jpg "Python")
 
 
 
