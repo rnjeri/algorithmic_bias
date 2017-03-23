@@ -1,4 +1,4 @@
-<!DOCTYPE htmil>
+<!DOCTYPE html>
 <html lang="en">
  
 <head>
@@ -32,7 +32,7 @@
             <div class="col-lg-6">
                 <h4>Feature Questions</h4>
 		<p class="question">1. What is your gender?</p>
-		<ul class="answers":w>
+		<ul class="answers">
 		<input type="radio" name="gender" value="male" id="q1a"><label for="q1a">Male</label><br/>
 		<input type="radio" name="gender" value="female" id="q1b"><label for="q1b">Female</label><br/>
 		</ul>
@@ -45,24 +45,54 @@
                 </ul>
 		<p class="question">3. What race do you identify as?</p>
                 <ul class="answers">
-                <input type="radio" name="race" value="African American" id="q1a"><label for="q1a">African American</label><br/>
-                <input type="radio" name="race" value="Caucasian" id="q1b"><label for="q1b">Caucasian</label><br/>
-                <input type="radio" name="race" value="Hispanic" id="q1a"><label for="q1a">Hispanic</label><br/>
-                <input type="radio" name="race" value="Asian" id="q1b"><label for="q1b">Asian</label><br/>
+                <input type="radio" name="race" value="African American" id="q3a"><label for="q3a">African American</label><br/>
+                <input type="radio" name="race" value="Caucasian" id="q3b"><label for="q3b">Caucasian</label><br/>
+                <input type="radio" name="race" value="Hispanic" id="q3c"><label for="q3c">Hispanic</label><br/>
+                <input type="radio" name="race" value="Asian" id="q3d"><label for="q3d">Asian</label><br/>
 		</ul>
            	 <p class="question">4. How old are you?</p>
-		<form> Age:<br> <input type="int" name="age"><br></form>
-                </ul> 
-		<p class="btn btn-lg btn-success" href="showSignUp" role="button">Calculate Your Predicted Recidivism</a>
-            </p>
+		<form> Age<br> <input type="int" name="age"><br></form>
+		<button type="button" id="solve">Calculate!</button>
 		</div>
         </div>
  
-        <footer class="footer">
-            <p> Copyright &copy; Rebecca Njeri 2017</p>
-        </footer>
- 
     </div>
+
+<script type="text/javascript">
+
+let get_responses = function() {
+  let gender = document.querySelector('input[name = "gender"]:checked').value
+  let education = document.querySelector('input[name = "education"]:checked').value
+  let race = document.querySelector('input[name = "race"]:checked').value
+ 	let age = $("input#age").val()
+    return {
+      {'gender': gender,
+      'education': education,
+      'race':race,
+		  'age': parseInt(age)
+}
+};
+
+let send_responses_json = function(responses) {
+    $.ajax({
+        url: '/calculate',
+        contentType: "application/json; charset=utf-8",
+        type: 'POST',
+        success: function (data) {
+            display_solutions(data);
+        },
+        data: JSON.stringify(responses)
+    });
+};
+
+$(document).ready(function() {
+    $("button#calculate").click(function() {
+        let reponses = get_responses()
+        send_responses_json(responses);
+    })
+})
+
+</script>
 </body>
  
 </html>
