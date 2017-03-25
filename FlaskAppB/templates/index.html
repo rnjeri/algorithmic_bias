@@ -25,18 +25,17 @@
     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
     <style>
     .navbar-toggler {
-        z-index: 1; 
-    }   
+        z-index: 1;
+    }
     
     @media (max-width: 576px) {
         nav > .container {
-            width: 100%; 
-        }   
-    }   
+            width: 100%;
+        }
+    }
     </style>
+</head>
 <body>
-<head>
- 
     <div class="container">
         <div class="header">
             <nav>
@@ -57,17 +56,10 @@
             <div class="col-lg-6">
                 <h4>Feature Questions</h4>
 		<p class="question">1. What is your gender?</p>
-		<ul class="answers":w>
+		<ul class="answers">
 		<input type="radio" name="gender" value="male" id="q1a"><label for="q1a">Male</label><br/>
 		<input type="radio" name="gender" value="female" id="q1b"><label for="q1b">Female</label><br/>
 		</ul>
-		<p class="question">2. What is your education level?</p>
-                <ul class="answers">
-                <input type="radio" name="education" value="College Degree" id="q2a"><label for="q2a">College Degree</label><br/>
-                <input type="radio" name="education" value="High School Diploma" id="q2b"><label for="q2b">High School Diploma</label><br/>
-		<input type="radio" name="education" value="GED" id="q2c"><label for="q2c">GED</label><br/>
-                <input type="radio" name="education" value="8th Grade" id="q2d"><label for="q2d">8th Grade</label><br/>
-                </ul>
 		<p class="question">3. What race do you identify as?</p>
                 <ul class="answers">
                 <input type="radio" name="race" value="African American" id="q1a"><label for="q1a">African American</label><br/>
@@ -77,8 +69,7 @@
 		</ul>
            	 <p class="question">4. How old are you?</p>
 		<form> Age:<br> <input type="int" name="age"><br></form>
-                </ul> 
-		<p class="btn btn-lg btn-success" href="showSignUp" role="button">Calculate Your Predicted Recidivism</a>
+		<p class="btn btn-lg btn-success"  href="showSignUp" role="button">Calculate Your Predicted Recidivism</a>
             </p>
 		</div>
         </div>
