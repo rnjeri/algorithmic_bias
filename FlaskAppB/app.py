@@ -12,7 +12,7 @@ def about_page():
 def contact_me():
     return render_template('about.html')
 @app.route('/calculate', methods=['POST'])
-def solve():
+def calculate():
     user_data = request.json
     age, gender, race = user_data['age'], user_data['gender'], user_data['race']
     predicted_recidivism = _calculate_overall_recidivism(age, gender, race)
@@ -35,8 +35,8 @@ def _race_recidivism_prediction(race):
         return 34.2
     elif race== 'Asian/Pacific Islander':
         return 23.0
-    else return:
-        17.6
+    else:
+      return 17.6
 def _age_recidivism_prediction(age):
     if age <= 19:
         return 29.3
@@ -57,5 +57,5 @@ def _age_recidivism_prediction(age):
     else:
         return 9.8
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
