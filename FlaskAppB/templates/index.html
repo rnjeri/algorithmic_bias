@@ -42,6 +42,8 @@
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation"><a href="/about">About</a>
                     </li>
+                    <li role="presentation"><a href="/blog">Blog</a>
+                    </li>
                 </ul>
             </nav>
             <h1 class="text-muted">Machine Bias</h1>
@@ -60,17 +62,20 @@
 		<input type="radio" name="gender" value="male" id="q1a"><label for="q1a">Male</label><br/>
 		<input type="radio" name="gender" value="female" id="q1b"><label for="q1b">Female</label><br/>
 		</ul>
-		<p class="question">3. What race do you identify as?</p>
+		<p class="question">2. What race do you identify as?</p>
                 <ul class="answers">
-                <input type="radio" name="race" value="African American" id="q1a"><label for="q1a">African American</label><br/>
-                <input type="radio" name="race" value="Caucasian" id="q1b"><label for="q1b">Caucasian</label><br/>
+                <input type="radio" name="race" value="White" id="q1a"><label for="q1a">White</label><br/>
+                <input type="radio" name="race" value="Black" id="q1b"><label for="q1b">Black</label><br/>
                 <input type="radio" name="race" value="Hispanic" id="q1a"><label for="q1a">Hispanic</label><br/>
-                <input type="radio" name="race" value="Asian" id="q1b"><label for="q1b">Asian</label><br/>
+                <input type="radio" name="race" value="N. American Indian" id="q1b"><label for="q1b">N. American Indian</label><br/>
+                <input type="radio" name="race" value="Asian/Pacific Islander" id="q1b"><label for="q1b">Asian/Pacific Islander</label><br/>
+                <input type="radio" name="race" value="Other" id="q1b"><label for="q1b">Other</label><br/>
 		</ul>
-           	 <p class="question">4. How old are you?</p>
+           	 <p class="question">3. How old are you?</p>
 		<form> Age:<br> <input type="int" name="age"><br></form>
-		<p class="btn btn-lg btn-success"  href="showSignUp" role="button">Calculate Your Predicted Recidivism</a>
-            </p>
+		<div>
+		 <button type="button" id="calculate">Calculate Your Predicted Recidivism!</button>
+		 </div>
 		</div>
         </div>
  
@@ -79,6 +84,43 @@
         </footer>
  
     </div>
+    
+ <p> Your predicted recidivism is: <span id="solution"></span> </p>
+    
+<script type="text/javascript">
+
+let get_responses = function() {
+  let gender = document.querySelector('input[name = "gender"]:checked').value
+  let race = document.querySelector('input[name = "race"]:checked').value
+ 	let age = $("input#age").val()
+    return {
+      {'gender': gender,
+      'race':race,
+		  'age': parseInt(age)
+}
+};
+let send_responses_json = function(responses) {
+    $.ajax({
+        url: '/calculate',
+        contentType: "application/json; charset=utf-8",
+        type: 'POST',
+        success: function (data) {
+            display_solutions(data);
+        },
+        data: JSON.stringify(responses)
+    });
+};
+let display_solutions = function(responses) {
+    $("span#solution").html(responses.predicted_recidivism)
+};
+
+$(document).ready(function() {
+    $("button#calculate").click(function() {
+        let responses = get_responses()
+        send_responses_json(responses);
+    })
+})
+</script>
 </body>
  
 </html>
