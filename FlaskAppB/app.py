@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-import _pickle as pickle
  
 app = Flask(__name__)
 @app.route("/")
@@ -11,14 +10,21 @@ def about_page():
 @app.route("/about", methods=['GET', 'POST'])
 def contact_me():
     return render_template('about.html')
-@app.route('/calculate', methods=['POST'])
-def calculate():
+@app.route("/calculate", methods=["POST"])
+def calculator():
     user_data = request.json
     age, gender, race = user_data['age'], user_data['gender'], user_data['race']
     predicted_recidivism = _calculate_overall_recidivism(age, gender, race)
     return jsonify({'predicted_recidivism': predicted_recidivism})
 def _calculate_overall_recidivism(age, race, gender):
     return (_age_recidivism_prediction(age) +  _race_recidivism_prediction(race) + _gender_recidivism_prediction(gender))/3
+def _alternate_life_recidivism(race, predicted_recidivism):
+    if race == 'white':
+        return predicted_recidivism /2
+    elif race == 'black':
+        return predicted_recidivism *2
+    else:
+        return predicted_recidivism
 def _gender_recidivism_prediction(gender):
     if gender == 'Female':
         return 20.1
