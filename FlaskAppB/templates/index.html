@@ -10,6 +10,13 @@
     <meta name="author" content="">
 
     <title>Algorithmic Bias</title>
+    
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='jquery.js') }}">
+    </script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='app.js') }}">
+    </script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,15 +71,19 @@
 		</ul>
 		<p class="question">2. What race do you identify as?</p>
                 <ul class="answers">
-                <input type="radio" name="race" value="White" id="q1a"><label for="q1a">White</label><br/>
-                <input type="radio" name="race" value="Black" id="q1b"><label for="q1b">Black</label><br/>
-                <input type="radio" name="race" value="Hispanic" id="q1a"><label for="q1a">Hispanic</label><br/>
-                <input type="radio" name="race" value="N. American Indian" id="q1b"><label for="q1b">N. American Indian</label><br/>
-                <input type="radio" name="race" value="Asian/Pacific Islander" id="q1b"><label for="q1b">Asian/Pacific Islander</label><br/>
-                <input type="radio" name="race" value="Other" id="q1b"><label for="q1b">Other</label><br/>
+                <input type="radio" name="race" value="White" id="q2a"><label for="q2a">White</label><br/>
+                <input type="radio" name="race" value="Black" id="q2b"><label for="q2b">Black</label><br/>
+                <input type="radio" name="race" value="Hispanic" id="q2c"><label for="q2c">Hispanic</label><br/>
+                <input type="radio" name="race" value="N. American Indian" id="q2d"><label for="q2d">N. American Indian</label><br/>
+                <input type="radio" name="race" value="Asian/Pacific Islander" id="q2e"><label for="q2e">Asian/Pacific Islander</label><br/>
+                <input type="radio" name="race" value="Other" id="q2f"><label for="q2f">Other</label><br/>
 		</ul>
-           	 <p class="question">3. How old are you?</p>
-		<form> Age:<br> <input type="int" name="age"><br></form>
+		<div class="form-group">
+          <p class="form-control-static">3. How old are you:</p>
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="age"></input>
+        </div>
 		<div>
 		 <button type="button" id="calculate">Calculate Your Predicted Recidivism!</button>
 		 </div>
@@ -87,40 +98,6 @@
     
  <p> Your predicted recidivism is: <span id="solution"></span> </p>
     
-<script type="text/javascript">
-
-let get_responses = function() {
-  let gender = document.querySelector('input[name = "gender"]:checked').value
-  let race = document.querySelector('input[name = "race"]:checked').value
- 	let age = $("input#age").val()
-    return {
-      {'gender': gender,
-      'race':race,
-		  'age': parseInt(age)
-}
-};
-let send_responses_json = function(responses) {
-    $.ajax({
-        url: '/calculate',
-        contentType: "application/json; charset=utf-8",
-        type: 'POST',
-        success: function (data) {
-            display_solutions(data);
-        },
-        data: JSON.stringify(responses)
-    });
-};
-let display_solutions = function(responses) {
-    $("span#solution").html(responses.predicted_recidivism)
-};
-
-$(document).ready(function() {
-    $("button#calculate").click(function() {
-        let responses = get_responses()
-        send_responses_json(responses);
-    })
-})
-</script>
 </body>
  
 </html>
