@@ -33,10 +33,10 @@ I tried to be very conscious of the effect the data set would have on the traine
 
 ### Resources and Further Reading
 - [Machine Bias:](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)There’s software used across the country to predict future criminals. And it’s biased against blacks.
+- [How Pro Publica Analyzed the COMPAS Recidivism Algorithm](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
 - [Equality of Opportunity in Supervised Learning](https://arxiv.org/pdf/1610.02413.pdf)
-- [Google's algorithm] (http://www.independent.co.uk/life-style/gadgets-and-tech/news/googles-algorithm-shows-prestigious-job-ads-to-men-but-not-to-women-10372166.html)shows prestigious job ads to men, but not to women.
+- [Google's algorithm] (http://www.independent.co.uk/life-style/gadgets-and-tech/news/googles-algorithm-shows-prestigious-job-ads-to-men-but-not-to-women-10372166.html) shows prestigious job ads to men, but not to women.
 
-![alt text](https://github.com/rnjeri/machine_bias/blob/master/software_images/python.jpg "Python")
 
 
 
