@@ -10,23 +10,24 @@ def about_page():
 @app.route("/contact", methods=['GET', 'POST'])
 def contact_me():
     return render_template('contact.html')
-@app.route("/about", methods=['GET', 'POST'])
-def about_me():
-    return render_template('about.html')
 @app.route("/calculate", methods=["POST"])
 def calculator():
     user_data = request.json
     age, gender, race = user_data['age'], user_data['gender'], user_data['race']
     predicted_recidivism = _calculate_overall_recidivism(age, gender, race)
     alt_life_recidivism = _alternate_life_recidivism(race, _calculate_overall_recidivism(age, gender, race))
-    return jsonify({'predicted_recidivism': predicted_recidivism, 'alt_life_recidivism': alt_life_recidivism})
+    if race == 'White':
+      alt_race = 'African American'
+    if race == 'African American':
+      alt_race = 'White'
+    return jsonify({'predicted_recidivism': str(round(predicted_recidivism)) + '%', 'alt_life_recidivism': 'All other factors held constant, if you were '+ alt_race +' and not '+ race +' your predicted recidivism would be: ' + str(round(alt_life_recidivism)) + '%'})
 def _calculate_overall_recidivism(age, race, gender):
     return (_age_recidivism_prediction(age) +  _race_recidivism_prediction(race) + _gender_recidivism_prediction(gender))/3
 def _alternate_life_recidivism(race, predicted_recidivism):
     if race == 'White':
-        return predicted_recidivism /2
-    elif race == 'Black':
         return predicted_recidivism *2
+    elif race == 'Black':
+        return predicted_recidivism /2
     else:
         return predicted_recidivism
 def _gender_recidivism_prediction(gender):
