@@ -16,13 +16,17 @@ def calculator():
     age, gender, race = user_data['age'], user_data['gender'], user_data['race']
     predicted_recidivism = _calculate_overall_recidivism(age, gender, race)
     alt_life_recidivism = _alternate_life_recidivism(race, _calculate_overall_recidivism(age, gender, race))
-    if race == 'White':
-      alt_race = 'African American'
-    if race == 'African American':
-      alt_race = 'White'
-    return jsonify({'predicted_recidivism': str(round(predicted_recidivism)) + '%', 'alt_life_recidivism': 'All other factors held constant, if you were '+ alt_race +' and not '+ race +' your predicted recidivism would be: ' + str(round(alt_life_recidivism)) + '%'})
+    alt_r = _alt_race_predictor(race)
+    return jsonify({'predicted_recidivism': str(round(predicted_recidivism)) + '%', 'alt_life_recidivism': 'All other factors held constant, if you were '+ alt_r + ' and not '+ race +' your predicted recidivism would be: ' + str(round(alt_life_recidivism)) + '%'})
 def _calculate_overall_recidivism(age, race, gender):
     return (_age_recidivism_prediction(age) +  _race_recidivism_prediction(race) + _gender_recidivism_prediction(gender))/3
+def _alt_race_predictor(race):
+    if race == 'White':
+        return 'African American'
+    elif race == 'Black':
+        return 'White'
+    else:
+        return race
 def _alternate_life_recidivism(race, predicted_recidivism):
     if race == 'White':
         return predicted_recidivism *2
