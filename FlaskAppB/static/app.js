@@ -18,7 +18,8 @@ let send_responses_json = function(responses) {
     });
 };
 let display_solutions = function(solutions) {
-    $("span#solution").html(solutions.predicted_recidivism)
+    $("span#solution").html(solutions.predicted_recidivism + "and " + solutions.alt_life_recidivism)
+    $("span#solutionb").html(solutions.alt_life_recidivism)
 };
 
 $(document).ready(function() {
