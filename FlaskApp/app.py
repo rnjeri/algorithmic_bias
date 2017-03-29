@@ -7,6 +7,7 @@ import random
 from IPython.html.widgets import interact
 from matplotlib.legend_handler import HandlerLine2D
 import matplotlib.pyplot as plt
+##imports in the mdoel
 
 app = Flask(__name__)
 @app.route("/")
@@ -15,6 +16,10 @@ def main():
 @app.route("/about", methods=['GET', 'POST'])
 def about_page():
     return render_template('about.html')
+    
+@app.route("/contact", methods=['GET', 'POST'])
+def contact_me():
+    return render_template('contact.html')
 
 @app.route('/plot.png')
 def plot():
@@ -41,7 +46,6 @@ def plot():
     response = make_response(output.getvalue())
     response.mimetype = 'image/png'
     return response
-    
 
 if __name__ == "__main__":
     app.run(debug=True)
